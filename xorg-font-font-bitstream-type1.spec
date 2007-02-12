@@ -1,5 +1,5 @@
 Summary:	bitstream-type1 font
-Summary(pl.UTF-8):   Font bitstream-type1
+Summary(pl.UTF-8):	Font bitstream-type1
 Name:		xorg-font-font-bitstream-type1
 Version:	1.0.0
 Release:	0.1
