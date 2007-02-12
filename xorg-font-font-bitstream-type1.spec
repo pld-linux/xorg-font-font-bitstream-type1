@@ -1,5 +1,5 @@
 Summary:	bitstream-type1 font
-Summary(pl):	Font bitstream-type1
+Summary(pl.UTF-8):   Font bitstream-type1
 Name:		xorg-font-font-bitstream-type1
 Version:	1.0.0
 Release:	0.1
@@ -21,7 +21,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 bitstream-type1 font.
 
-%description -l pl
+%description -l pl.UTF-8
 Font bitstream-type1.
 
 %prep
