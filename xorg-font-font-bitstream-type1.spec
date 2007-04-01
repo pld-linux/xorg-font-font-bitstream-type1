@@ -1,11 +1,11 @@
-Summary:	bitstream-type1 font
-Summary(pl.UTF-8):	Font bitstream-type1
+Summary:	Bitstream Type1 fonts
+Summary(pl.UTF-8):	Fonty Type1 Bitstream
 Name:		xorg-font-font-bitstream-type1
 Version:	1.0.0
-Release:	0.1
+Release:	1
 License:	MIT
 Group:		Fonts
-Source0:	http://xorg.freedesktop.org/releases/X11R7.0/src/font/font-bitstream-type1-%{version}.tar.bz2
+Source0:	http://xorg.freedesktop.org/releases/individual/font/font-bitstream-type1-%{version}.tar.bz2
 # Source0-md5:	6610475e2e231242f8f2122a709c3695
 URL:		http://xorg.freedesktop.org/
 BuildRequires:	autoconf >= 2.57
@@ -19,10 +19,10 @@ Requires:	%{_fontsdir}/Type1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-bitstream-type1 font.
+Bitstream Charter and Courier fonts in Type1 format.
 
 %description -l pl.UTF-8
-Font bitstream-type1.
+Fonty Bitstream Charter i Courier w formacie Type1.
 
 %prep
 %setup -q -n font-bitstream-type1-%{version}
@@ -49,6 +49,17 @@ mv -f *.afm afm
 sed -e '1d' fonts.scale > fonts.scale.bitstream
 rm -f fonts.scale fonts.dir fonts.cache-1
 
+cat > Fontmap.bitstream <<EOF
+/Courier10PitchBT-Roman                  (c0419bt_.pfb) ;
+/Courier10PitchBT-Italic                 (c0582bt_.pfb) ;
+/Courier10PitchBT-Bold                   (c0583bt_.pfb) ;
+/Courier10PitchBT-BoldItalic             (c0611bt_.pfb) ;
+/CharterBT-Bold                          (c0632bt_.pfb) ;
+/CharterBT-BoldItalic                    (c0633bt_.pfb) ;
+/CharterBT-Roman                         (c0648bt_.pfb) ;
+/CharterBT-Italic                        (c0649bt_.pfb) ;
+EOF
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -64,3 +75,4 @@ fontpostinst Type1
 %{_fontsdir}/Type1/*.pfb
 %{_fontsdir}/Type1/afm/*.afm
 %{_fontsdir}/Type1/fonts.scale.bitstream
+%{_fontsdir}/Type1/Fontmap.bitstream
