@@ -1,12 +1,12 @@
 Summary:	Bitstream Type1 fonts
 Summary(pl.UTF-8):	Fonty Type1 Bitstream
 Name:		xorg-font-font-bitstream-type1
-Version:	1.0.0
-Release:	2
+Version:	1.0.1
+Release:	1
 License:	MIT
 Group:		Fonts
 Source0:	http://xorg.freedesktop.org/releases/individual/font/font-bitstream-type1-%{version}.tar.bz2
-# Source0-md5:	6610475e2e231242f8f2122a709c3695
+# Source0-md5:	a4e8e229a051c0ede9eb525e4006d93a
 URL:		http://xorg.freedesktop.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -33,6 +33,8 @@ Fonty Bitstream Charter i Courier w formacie Type1.
 %{__autoconf}
 %{__automake}
 %configure \
+	--build=%{_host_platform} \
+	--host=%{_host_platform} \
 	--with-fontdir=%{_fontsdir}/Type1
 
 %{__make}
