@@ -13,7 +13,8 @@ BuildRequires:	automake
 BuildRequires:	fontconfig
 BuildRequires:	xorg-app-mkfontdir
 BuildRequires:	xorg-app-mkfontscale
-BuildRequires:	xorg-util-util-macros
+BuildRequires:	xorg-font-font-util >= 1.1
+BuildRequires:	xorg-util-util-macros >= 1.3
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/Type1
 BuildArch:	noarch
@@ -33,8 +34,8 @@ Fonty Bitstream Charter i Courier w formacie Type1.
 %{__autoconf}
 %{__automake}
 %configure \
-	--build=%{_host_platform} \
-	--host=%{_host_platform} \
+	--build=%{_host} \
+	--host=%{_host} \
 	--with-fontdir=%{_fontsdir}/Type1
 
 %{__make}
@@ -74,7 +75,7 @@ fontpostinst Type1
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING ChangeLog
+%doc COPYING ChangeLog README
 %{_fontsdir}/Type1/*.pfb
 %{_fontsdir}/Type1/afm/*.afm
 %{_fontsdir}/Type1/fonts.scale.bitstream
