@@ -1,19 +1,19 @@
 Summary:	Bitstream Type1 fonts
 Summary(pl.UTF-8):	Fonty Type1 Bitstream
 Name:		xorg-font-font-bitstream-type1
-Version:	1.0.2
+Version:	1.0.3
 Release:	1
 License:	MIT
 Group:		Fonts
 Source0:	http://xorg.freedesktop.org/releases/individual/font/font-bitstream-type1-%{version}.tar.bz2
-# Source0-md5:	27c55f6a938e7153c59fb551b2f491f9
+# Source0-md5:	5e0c9895d69d2632e2170114f8283c11
 URL:		http://xorg.freedesktop.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	fontconfig
 BuildRequires:	xorg-app-mkfontdir
 BuildRequires:	xorg-app-mkfontscale
-BuildRequires:	xorg-font-font-util >= 1.1
+BuildRequires:	xorg-font-font-util >= 1.2
 BuildRequires:	xorg-util-util-macros >= 1.3
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/Type1
