@@ -1,20 +1,23 @@
 Summary:	Bitstream Type1 fonts
 Summary(pl.UTF-8):	Fonty Type1 Bitstream
 Name:		xorg-font-font-bitstream-type1
-Version:	1.0.3
-Release:	2
+Version:	1.0.4
+Release:	1
 License:	MIT
 Group:		Fonts
-Source0:	http://xorg.freedesktop.org/releases/individual/font/font-bitstream-type1-%{version}.tar.bz2
-# Source0-md5:	5e0c9895d69d2632e2170114f8283c11
-URL:		http://xorg.freedesktop.org/
-BuildRequires:	autoconf >= 2.57
+Source0:	https://xorg.freedesktop.org/releases/individual/font/font-bitstream-type1-%{version}.tar.xz
+# Source0-md5:	3974a3e7f15ed7de19e45b4139d1468c
+URL:		https://xorg.freedesktop.org/
+BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
 BuildRequires:	fontconfig
+BuildRequires:	pkgconfig >= 1:0.9.0
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-app-mkfontdir
 BuildRequires:	xorg-app-mkfontscale
 BuildRequires:	xorg-font-font-util >= 1.2
-BuildRequires:	xorg-util-util-macros >= 1.3
+BuildRequires:	xorg-util-util-macros >= 1.20
+BuildRequires:	xz
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/Type1
 BuildArch:	noarch
@@ -34,8 +37,10 @@ Fonty Bitstream Charter i Courier w formacie Type1.
 %{__autoconf}
 %{__automake}
 %configure \
+%if "%{_gnu}" != "-gnux32"
 	--build=%{_host} \
 	--host=%{_host} \
+%endif
 	--with-fontdir=%{_fontsdir}/Type1
 
 %{__make}
@@ -49,9 +54,9 @@ rm -rf $RPM_BUILD_ROOT
 # separate *.afm
 cd $RPM_BUILD_ROOT%{_fontsdir}/Type1
 install -d afm
-mv -f *.afm afm
+%{__mv} *.afm afm
 sed -e '1d' fonts.scale > fonts.scale.bitstream
-rm -f fonts.scale fonts.dir fonts.cache-1
+%{__rm} fonts.scale fonts.dir
 
 cat > Fontmap.bitstream <<EOF
 /Courier10PitchBT-Roman                  (c0419bt_.pfb) ;
@@ -75,7 +80,7 @@ fontpostinst Type1
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING ChangeLog README
+%doc COPYING ChangeLog README.md
 %{_fontsdir}/Type1/c0*.pfb
 %{_fontsdir}/Type1/afm/c0*.afm
 %{_fontsdir}/Type1/fonts.scale.bitstream
